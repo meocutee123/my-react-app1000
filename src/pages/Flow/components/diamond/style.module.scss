@@ -1,0 +1,32 @@
+.container {
+  height: 50px;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #ebebeb;
+  input {
+    outline: none;
+    border: none;
+    padding-left: 70px;
+    font-size: 12px !important;
+    height: 100%;
+  }
+}
+
+//node handle
+.handle {
+  width: 18px;
+  height: 18px;
+  z-index: 10;
+}
+
+.diamond {
+  position: absolute;
+  width: 100px;
+  top: -50%;
+  left: -40px;
+  img {
+    width: 100px;
+    height: auto;
+  }
+}

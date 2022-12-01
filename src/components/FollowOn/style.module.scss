@@ -1,0 +1,31 @@
+.socials {
+  h4 {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    li {
+      cursor: pointer;
+      margin-right: 26px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        color: #00aaa1;
+      }
+    }
+  }
+}
+
+.compact {
+  h4 {
+    font-size: 15px !important;
+    margin-bottom: 16px !important;
+  }
+  li {
+    margin-right: 20px !important;
+  }
+}

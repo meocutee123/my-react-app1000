@@ -1,0 +1,51 @@
+.container {
+  padding: 80px 152px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.contactUs {
+  margin-bottom: 40px;
+  text-align: center;
+  h1 {
+    margin-bottom: 16px;
+    span {
+      display: inline-block;
+      background-color: #00aaa1;
+      padding: 0 2px 0 0px;
+      color: #fff;
+    }
+  }
+}
+
+.contactForm {
+  width: 636px;
+  display: flex;
+  flex-direction: column;
+
+  input,
+  textarea {
+    outline: none;
+    background: transparent;
+    border: 1px solid #94d7d3;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  textarea {
+    height: 153px;
+    resize: none;
+  }
+}
+
+.additionalInformation {
+  max-width: 394px;
+  p:first-child {
+    margin-bottom: 40px;
+  }
+
+  p:nth-child(4) {
+    margin-bottom: 32px;
+  }
+}

@@ -1,0 +1,32 @@
+.container {
+  max-width: 360px;
+  h2 {
+    margin-bottom: 40px;
+  }
+}
+
+.todaysUpdate {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  div {
+    height: 111px;
+    flex: 1 0 calc(50% - 24px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f8f7;
+    border-radius: 10px;
+    flex-direction: column;
+    span:first-child {
+      font-size: 34px;
+      font-weight: 600;
+      color: #00aaa1;
+      margin-bottom: 6px;
+    }
+    span:last-child {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+}

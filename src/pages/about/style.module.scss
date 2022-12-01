@@ -1,0 +1,66 @@
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 80px 212px;
+}
+
+.headline,
+.featuredOn {
+  margin-bottom: 90px;
+  h2 {
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    width: 540px;
+  }
+  p {
+    text-align: center;
+    width: 665px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    color: #555555;
+    > strong {
+      font-size: 17px;
+      color: #222222;
+    }
+  }
+}
+
+.authors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.author {
+  flex: 1 0 calc(50% - 40px);
+  height: 150px;
+  img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: column;
+  p.name {
+    text-align: start;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 12px;
+  }
+  span {
+    color: #777777;
+    margin-bottom: 20px;
+  }
+  a {
+    text-decoration: none;
+    color: #00aaa1;
+  }
+}
