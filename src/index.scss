@@ -49,3 +49,16 @@ textarea {
   background-color: #00aaa1;
   padding-right: 2px;
 }
+
+.react-flow__node.selected {
+  outline-offset: 48px;
+  outline: 3px dashed limegreen;
+}
+
+path.react-flow__edge-path {
+  stroke-width: 4;
+}
+
+path.react-flow__edge-path:hover {
+  stroke-width: 4;
+}
