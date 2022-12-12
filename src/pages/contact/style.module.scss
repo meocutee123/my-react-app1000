@@ -39,6 +39,16 @@
   }
 }
 
+.errorMessage {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 8px;
+  color: red;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
 .additionalInformation {
   max-width: 394px;
   p:first-child {

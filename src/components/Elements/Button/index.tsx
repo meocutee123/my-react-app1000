@@ -10,7 +10,9 @@ export default function Button({ caption, theme }: Props) {
 
   return (
     <>
-      <button className={`${style.button} ${background}`}>{caption}</button>
+      <button type='submit' className={`${style.button} ${background}`}>
+        {caption}
+      </button>
     </>
   );
 }
