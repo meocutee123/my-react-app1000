@@ -8,7 +8,7 @@ export function Home() {
 
   return (
     <Container>
-      <h1>Emlaconcho</h1>
+      
     </Container>
   );
 }

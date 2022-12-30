@@ -1,5 +1,3 @@
-import { number, string } from "yup";
-
 let accountAny: any; //this means turn of the Typescript: "type-check"
 let accountUnknow: unknown //the right way to use
 
