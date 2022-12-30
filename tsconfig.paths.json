@@ -5,9 +5,11 @@
       "@app/*": ["./app/*"],
       "@api/*": ["./api/*"],
       "@utils/*": ["./utils/*"],
+      "@store/*": ["./store/*"],
       "@assets/*": ["./assets/*"],
       "@features/*": ["./features/*"],
-      "@components/*": ["./components/*"]
+      "@components/*": ["./components/*"],
+      "@environments/*": ["./environments/*"]
     }
   }
 }
