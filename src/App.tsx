@@ -1,21 +1,19 @@
-import './App.scss';
-
-import { Home } from '@features/home';
 import { Route, Routes } from 'react-router-dom';
-
+import { Home } from '@features/home';
+import { Pokemon } from '@features/pokemon';
 import { NotFound } from '@features/404';
-import Pokemon from '@features/pokemon';
+
+import { ThemeProvider } from '@context/theme';
+import { Template } from '@context/template';
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path='/' element={<Home />}></Route>
+      <ThemeProvider>
+        <Template>
 
-        <Route path='/pokemon' element={<Pokemon />}></Route>
-
-        <Route path='*' element={<NotFound />}></Route>
-      </Routes>
+        </Template>
+      </ThemeProvider>f
     </>
   );
 }

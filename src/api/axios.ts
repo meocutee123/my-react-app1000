@@ -1,10 +1,9 @@
 import axios from "axios";
-import { environment } from "@environments/environment";
 
 const instance = axios.create({
-  baseURL: environment.apiUrl,
+  baseURL: 'https://pokeapi.co/api/v2/',
   headers: {
-    Authorization: environment.apiUrl,
+    Authorization: '',
     'Content-Type': 'application/json',
     Accept: 'application/json',
     timeout: 2000,

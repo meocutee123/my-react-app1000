@@ -1,14 +1,10 @@
-import { useEffect } from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div``;
-
+import Navigation from '@layouts/navigation';
+import { Outlet } from 'react-router-dom';
+import { StyledContainer } from './index.styled';
 export function Home() {
-  useEffect(() => {}, []);
-
   return (
-    <Container>
-      
-    </Container>
+    <StyledContainer>
+      <p>Home works</p>
+    </StyledContainer>
   );
 }
