@@ -1,21 +1,24 @@
-import { Route, Routes } from 'react-router-dom';
-import { Home } from '@features/home';
-import { Pokemon } from '@features/pokemon';
-import { NotFound } from '@features/404';
+import React from 'react';
+import routes from './router';
+import { useRoutes } from 'react-router-dom';
 
-import { ThemeProvider } from '@context/theme';
-import { Template } from '@context/template';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
-function App() {
+import { ThemeProvider } from '@themes/theme-provider';
+import { CssBaseline } from '@mui/material';
+
+export default function App() {
+  const routeElements = useRoutes(routes);
+
   return (
-    <>
+    <React.StrictMode>
       <ThemeProvider>
-        <Template>
-
-        </Template>
-      </ThemeProvider>f
-    </>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <CssBaseline />
+          {routeElements}
+        </LocalizationProvider>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 }
-
-export default App;

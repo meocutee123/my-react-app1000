@@ -2,10 +2,12 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@lib/*": ["./lib/*"],
       "@app/*": ["./app/*"],
       "@api/*": ["./api/*"],
       "@utils/*": ["./utils/*"],
       "@store/*": ["./store/*"],
+      "@themes/*": ["./themes/*"],
       "@assets/*": ["./assets/*"],
       "@context/*": ["./context/*"],
       "@layouts/*": ["./layouts/*"],

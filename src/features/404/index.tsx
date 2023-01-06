@@ -1,12 +1,9 @@
 import { StyledContainer } from './index.styled';
 import { ReactComponent as ArrowLeft } from '@assets/icons/arrow-right.svg';
-import Cookie from '@components/ui/cookie';
 import { useRouteError } from 'react-router-dom';
 
-export function NotFound() {
+export default function NotFound() {
 
-  const error = useRouteError()
-  console.log(error)
   return (
     <>
       <StyledContainer>

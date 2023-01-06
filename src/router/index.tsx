@@ -1,47 +1,58 @@
-import { NotFound } from '@features/404';
-import Contact from '@features/contact';
-import { Home } from '@features/home';
-import Services from '@features/services';
-import Team from '@features/team';
-import Where from '@features/where-we-work';
-import App from '@layouts/app';
-import { createBrowserRouter } from 'react-router-dom';
+import { ComponentType, lazy, LazyExoticComponent, Suspense } from 'react';
+import Fallback from '@components/ui/fallback';
+import {
+  Navigate,
+  RouteObject,
+} from 'react-router-dom';
+import Operator from '@layouts/operator';
 
-export const router = createBrowserRouter([
+const appInitializer = async () =>
+  new Promise<string>((resolve) =>
+    setTimeout(() => {
+      console.log(
+        '%cApp configurations initiated!',
+        'color: green; font-weight: bold;'
+      );
+      resolve('done');
+    }, 1000)
+  );
+
+const Loader =
+  (Component: LazyExoticComponent<ComponentType<any>>) => (props: any) =>
+    (
+      <Suspense fallback={<Fallback />}>
+        <Component {...props} />
+      </Suspense>
+    );
+
+//Pages
+const Home = Loader(lazy(() => import('@features/home')));
+
+//Status
+const NotFound = Loader(lazy(() => import('@features/404')));
+const Error = Loader(lazy(() => import('@features/500')));
+const Maintaince = Loader(lazy(() => import('@features/maintainece')));
+const Comming = Loader(lazy(() => import('@features/comming')));
+
+const routes: RouteObject[] = [
   {
     path: '',
-    element: <App />,
-    errorElement: <NotFound />,
-
+    element: <Operator />,
     children: [
       {
         path: '/',
         element: <Home />,
       },
       {
-        path: '/services',
-        element: <Services />,
-
-        children: [],
+        path: 'home',
+        element: <Navigate to='/' replace />,
       },
       {
-        path: '/contact',
-        element: <Contact />,
-
-        children: [],
-      },
-      {
-        path: '/team',
-        element: <Team />,
-
-        children: [],
-      },
-      {
-        path: '/where-we-work',
-        element: <Where />,
-
-        children: [],
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
-]);
+];
+
+export default routes;

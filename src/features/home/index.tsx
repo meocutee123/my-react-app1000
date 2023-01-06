@@ -1,9 +1,9 @@
-import Navigation from '@layouts/navigation';
-import { Outlet } from 'react-router-dom';
+import Uploader from '@components/ui/uploader';
 import { StyledContainer } from './index.styled';
-export function Home() {
+export default function Home() {
   return (
     <StyledContainer>
+      {/* <Uploader /> */}
       <p>Home works</p>
     </StyledContainer>
   );
