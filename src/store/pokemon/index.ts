@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import api from '@api/axios'
-import { RootState } from "@store/index"
 interface PokemonState {
   collection: any[],
   loading: 'idle' | 'pending' | 'succeeded' | 'failed'
@@ -15,13 +14,13 @@ export const fetchPokemon = createAsyncThunk('pokemon', async () => {
   return data.results
 })
 
-export const pokemonSlice = createSlice({
+export const pokemon = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {
-    increment: state => {
-      console.log(state.loading)
-    }
+    increment: () => console.log('increment'),
+    decrement: () => console.log('decrement'),
+    loadPokemon: state => { state.loading = 'pending' }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPokemon.pending, state => { state.loading = 'pending' })
@@ -33,8 +32,6 @@ export const pokemonSlice = createSlice({
   }
 })
 
-export const { increment } = pokemonSlice.actions
+export const { increment, decrement, loadPokemon } = pokemon.actions
 
-export const selectPokemon = (state: RootState) => state.pokemon.collection
-
-export default pokemonSlice.reducer
+export default pokemon.reducer

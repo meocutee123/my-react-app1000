@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import Plane from './assets/plane-crash.png'
 
 export const StyledContainer = styled.div`
-  background-image: url("./plane-crash.png");
+  background-image: url(${Plane});
   width: 100%;
   height: 100%;
   background-position: center;

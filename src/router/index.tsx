@@ -27,6 +27,8 @@ const Loader =
 
 //Pages
 const Home = Loader(lazy(() => import('@features/home')));
+const Profile = Loader(lazy(() => import('@features/profile')));
+const Pokemon = Loader(lazy(() => import('@features/pokemon')));
 
 //Status
 const NotFound = Loader(lazy(() => import('@features/404')));
@@ -38,6 +40,7 @@ const routes: RouteObject[] = [
   {
     path: '',
     element: <Operator />,
+    
     children: [
       {
         path: '/',
@@ -48,10 +51,18 @@ const routes: RouteObject[] = [
         element: <Navigate to='/' replace />,
       },
       {
-        path: '*',
-        element: <NotFound />,
+        path: 'profile',
+        element: <Profile />,
+      },
+      {
+        path: 'pokemon',
+        element: <Pokemon />,
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ];
 

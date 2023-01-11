@@ -17,8 +17,7 @@ export const NavigationContext = createContext<Context>({} as Context);
 export const NavigationProvider: FC<PROPS> = ({ children }: PROPS) => {
   const [visibility, setVisibility] = useState<Visibility>('close');
 
-  const toggle = () =>
-    setVisibility((state) => (state === 'open' ? 'close' : 'open'));
+  const toggle = () => setVisibility((state) => (state === 'open' ? 'close' : 'open'))
 
   const close = () => setVisibility('close');
 

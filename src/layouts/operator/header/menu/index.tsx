@@ -69,7 +69,7 @@ export default function Menu() {
         </ListItem>
       </List>
 
-      <MuiMenu anchorEl={ref.current} onClose={handleClose} open={isOpen}>
+      <MuiMenu anchorEl={ref.current} onClose={handleClose} open={isOpen} disableScrollLock={true}>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/overview">
           Overview
         </MenuItem>

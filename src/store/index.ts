@@ -1,10 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
-import pokemonSlice from "@features/pokemon/pokemonSlice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+
+import blog from "./blog";
+import pokemon from "./pokemon";
 
 export const store = configureStore({
-  reducer: {
-    pokemon: pokemonSlice
-  }
+  reducer: { pokemon, blog },
+  middleware: getDefaultMiddleware => getDefaultMiddleware({
+    thunk: {
+      extraArgument: {
+        token: 'meocuteequas'
+      }
+    }
+  })
 })
 
 

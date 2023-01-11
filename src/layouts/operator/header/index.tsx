@@ -9,7 +9,7 @@ import {
   Tooltip,
   useTheme,
 } from '@mui/material';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { StyledContainer } from './index.styled';
 
 import Menu from './menu';
@@ -17,6 +17,10 @@ import Profile from './profile';
 
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+import Language from './language';
+
+const locale = localStorage.getItem('i18nextLng') || 'en';
+
 export default function Header() {
   const theme = useTheme();
   const { visibility, toggle } = useContext(NavigationContext);
@@ -49,8 +53,9 @@ export default function Header() {
       >
         <Menu />
       </Stack>
-      
+
       <Box display='flex' alignItems='center'>
+        <Language />
         <Profile />
         <Box
           component='span'
@@ -61,7 +66,7 @@ export default function Header() {
         >
           <Tooltip arrow title='Toggle Menu'>
             <IconButton color='primary' onClick={toggle}>
-              {visibility === 'open' ? (
+              {visibility === 'close' ? (
                 <MenuTwoToneIcon fontSize='small' />
               ) : (
                 <CloseTwoToneIcon fontSize='small' />

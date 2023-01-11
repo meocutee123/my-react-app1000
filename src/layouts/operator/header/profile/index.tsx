@@ -53,10 +53,12 @@ export default function Profile() {
         </StyledTextContainer>
         <ExpandMoreTwoToneIcon sx={{ ml: 1 }} />
       </StyledButton>
+      
       <Popover
         anchorEl={ref.current}
         onClose={handleClose}
         open={isOpen}
+        disableScrollLock={true}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',

@@ -1,21 +1,31 @@
 import { Box, useTheme } from '@mui/material';
-import { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Header from './header';
 import { StyledContainer } from './index.styled';
+import Navigation from './navigation';
 
-
-export default function () {
+export default function Operator () {
+  const theme = useTheme();
   return (
     <StyledContainer>
       <Header />
-      <Box>
+      <Navigation />
+      <Box
+        sx={{
+          position: 'relative',
+          zIndex: 5,
+          display: 'block',
+          flex: 1,
+          pt: `${theme.header.height}`,
+          [theme.breakpoints.up('lg')]: {
+            ml: `${theme.sidebar.width}`,
+          },
+        }}
+      >
         <Box display='block'>
           <Outlet />
         </Box>
       </Box>
     </StyledContainer>
   );
-
 }

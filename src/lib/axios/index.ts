@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'http://localhost:5000/',
+  baseURL: 'https://jsonplaceholder.typicode.com/',
   headers: {
     Authorization: '',
     'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ export const api = axios.create({
 })
 
 api.interceptors.response.use(
-  (response) => response.data,
+  (response) => response,
 
   error => {
     const status = error.reponse.status
