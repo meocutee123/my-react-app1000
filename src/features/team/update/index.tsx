@@ -31,7 +31,8 @@ export default function MemberUpdate() {
         name='id'
         defaultValue={member.id}
       />
-      <input type='text' name='name' defaultValue={member.name} />
+      <label htmlFor="name">Name</label>
+      <input type='text' name='name' defaultValue={member.name} placeholder='Name'/>
       <button type='submit'>Submit</button>
       <button type='button' onClick={() => navigate(-1)}>
         Cancel

@@ -1,37 +1,29 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import api from '@api/axios'
+import { fetchPokemon } from "./actions"
+import { createSlice } from "@reduxjs/toolkit"
 interface PokemonState {
   collection: any[],
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed'
+  loading: 'idle' | 'pending' | 'failed'
 }
 
 const initialState: PokemonState = {
   collection: [],
   loading: 'idle'
 }
-export const fetchPokemon = createAsyncThunk('pokemon', async () => {
-  const { data } = await api.get('pokemon')
-  return data.results
-})
 
-export const pokemon = createSlice({
+export const pokemonSlice = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {
     increment: () => console.log('increment'),
-    decrement: () => console.log('decrement'),
-    loadPokemon: state => { state.loading = 'pending' }
+    decrement: () => console.log('decrement')
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPokemon.pending, state => { state.loading = 'pending' })
-    builder.addCase(fetchPokemon.fulfilled, (state, { payload }) => {
-      state.loading = 'succeeded'
-      state.collection = payload
-    })
-    builder.addCase(fetchPokemon.rejected, (state) => { state.loading = 'failed' })
+    builder.addCase(fetchPokemon.pending, state => ({ ...state, loading: 'pending' }))
+    builder.addCase(fetchPokemon.fulfilled, (state, { payload }) => ({ ...state, loading: 'idle', collection: payload }))
+    builder.addCase(fetchPokemon.rejected, (state) => ({ ...state, loading: 'failed' }))
   }
 })
 
-export const { increment, decrement, loadPokemon } = pokemon.actions
+export const { increment, decrement } = pokemonSlice.actions
 
-export default pokemon.reducer
+export default pokemonSlice.reducer

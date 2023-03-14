@@ -1,3 +1,4 @@
+import BreadCrumbs from '@components/ui/breadcrumbs';
 import { Box, useTheme } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Header from './header';
@@ -22,6 +23,9 @@ export default function Operator () {
           },
         }}
       >
+        <Box p={3}>
+          <BreadCrumbs />
+        </Box>
         <Box display='block'>
           <Outlet />
         </Box>

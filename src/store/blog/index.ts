@@ -1,72 +1,39 @@
-import { api } from "@lib/axios"
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
+import { getComments, loadPosts } from "./actions"
 
-interface IBlog {
+interface BlogStateInterface {
   posts: any[],
   comments: any[],
-  albums: any[],
-  photos: any[],
-  todos: any[],
-  users: any[],
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed'
-  error: string
+  loading: 'idle' | 'pending' | 'failed'
+  error: string | undefined
 }
 
-const initialState: IBlog = {
+const initialState: BlogStateInterface = {
   posts: [],
   comments: [],
-  albums: [],
-  photos: [],
-  todos: [],
-  users: [],
   loading: 'idle',
-  error: ''
+  error: undefined
 }
 
-export const loadPosts = createAsyncThunk('post', async (_, {dispatch, getState, extra}) => {
-  const response = await api.get('posts')
-  return response.data
-})
-
-export const getComments = createAsyncThunk('comments', async (postId: number) => {
-  const response = await api.get(`posts/${postId}/comments`)
-  return { postId, comments: response.data }
-})
-
-export const slice = createSlice({
+export const blogSlice = createSlice({
   name: 'blog',
   initialState,
-  reducers: {
-    loadBlog: (state) => { state.loading = 'pending' }
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(loadPosts.pending, state => { state.loading = 'pending' })
+    builder.addCase(loadPosts.pending, state => ({ ...state, loading: 'pending' }))
+    builder.addCase(loadPosts.fulfilled, (state, { payload }) => ({ ...state,  loading: 'idle', posts: payload }))
+    builder.addCase(loadPosts.rejected, (state, { error }) => ({ ...state, loading: 'failed', error: error.message }))
 
-    builder.addCase(loadPosts.fulfilled, (state, { payload }) => {
-      state.posts = payload
-      state.loading = 'succeeded'
-    })
-
-    builder.addCase(loadPosts.rejected, (state, { error }) => {
-      state.error = error.message || ''
-      state.loading = 'failed'
-    })
-
-    builder.addCase(getComments.pending, state => { state.loading = 'pending' })
-
+    builder.addCase(getComments.pending, state => ({ ...state, loading: 'pending' }))
     builder.addCase(getComments.fulfilled, (state, { payload }) => {
       const post = state.posts.find(x => x.id === payload.postId)
-      if(post) post.comments = payload.comments
+      if (post) post.comments = payload.comments
 
-      state.loading = 'succeeded'
+      state.loading = 'idle'
     })
-
-    builder.addCase(getComments.rejected, (state, { error }) => {
-      state.error = error.message || ''
-      state.loading = 'failed'
-    })
+    builder.addCase(getComments.rejected, (state, { error }) => ({ ...state, loading: 'idle', error: error.message }))
 
   }
 })
 
-export default slice.reducer
+export default blogSlice.reducer

@@ -5,6 +5,7 @@ import {
   RouteObject,
 } from 'react-router-dom';
 import Operator from '@layouts/operator';
+import Calendar from '@features/calendar';
 
 const appInitializer = async () =>
   new Promise<string>((resolve) =>
@@ -33,7 +34,7 @@ const Pokemon = Loader(lazy(() => import('@features/pokemon')));
 //Status
 const NotFound = Loader(lazy(() => import('@features/404')));
 const Error = Loader(lazy(() => import('@features/500')));
-const Maintaince = Loader(lazy(() => import('@features/maintainece')));
+const Maintaince = Loader(lazy(() => import('@features/maintenance')));
 const Comming = Loader(lazy(() => import('@features/comming')));
 
 const routes: RouteObject[] = [
@@ -51,6 +52,10 @@ const routes: RouteObject[] = [
         element: <Navigate to='/' replace />,
       },
       {
+        path: 'calendar',
+        element: <Calendar />,
+      },
+      {
         path: 'profile',
         element: <Profile />,
       },
@@ -58,6 +63,10 @@ const routes: RouteObject[] = [
         path: 'pokemon',
         element: <Pokemon />,
       },
+      {
+        path: 'error',
+        element: <Error/>
+      }
     ],
   },
   {

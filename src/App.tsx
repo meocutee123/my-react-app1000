@@ -1,4 +1,4 @@
-import '@lib/i18n'
+import '@lib/i18n';
 import React from 'react';
 import routes from './router';
 import { useRoutes } from 'react-router-dom';
@@ -12,13 +12,11 @@ export default function App() {
   const routeElements = useRoutes(routes);
 
   return (
-
-      <ThemeProvider>
-        <Provider store={store}>
-          <CssBaseline />
-          {routeElements}
-        </Provider>
-      </ThemeProvider>
-    
+    <ThemeProvider>
+      <Provider store={store}>
+        <CssBaseline />
+        {routeElements}
+      </Provider>
+    </ThemeProvider>
   );
 }
