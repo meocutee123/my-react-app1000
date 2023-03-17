@@ -30,6 +30,7 @@ const Loader =
 const Home = Loader(lazy(() => import('@features/home')));
 const Profile = Loader(lazy(() => import('@features/profile')));
 const Pokemon = Loader(lazy(() => import('@features/pokemon')));
+const Editor = Loader(lazy(() => import('@features/editor')));
 
 //Status
 const NotFound = Loader(lazy(() => import('@features/404')));
@@ -39,7 +40,6 @@ const Comming = Loader(lazy(() => import('@features/comming')));
 
 const routes: RouteObject[] = [
   {
-    path: '',
     element: <Operator />,
     
     children: [
@@ -68,6 +68,10 @@ const routes: RouteObject[] = [
         element: <Error/>
       }
     ],
+  },
+  {
+    path: '/editor',
+    element: <Editor />
   },
   {
     path: '*',

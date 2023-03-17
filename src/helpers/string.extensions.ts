@@ -1,17 +1,8 @@
-declare global {
-  interface String {
-    hasValue(): boolean;
-  }
+export function toCamelCase(s: string) {
+  return s.split('_')
+    .map((x: string, index: number) => {
+      if (index === 0) return x;
+      return x.charAt(0).toUpperCase() + x.slice(1);
+    })
+    .join('');
 }
-
-
-String.prototype.hasValue = function () {
-  if (this === undefined) return false
-  if (this === null) return false
-  if (this === '') return false
-  if (this.trim() === '') return false
-
-  return true
-};
-
-export { }

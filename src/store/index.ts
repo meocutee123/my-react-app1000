@@ -1,17 +1,11 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 import blog from "./blog";
+import notion from "./notion";
 import pokemon from "./pokemon";
 
 export const store = configureStore({
-  reducer: { pokemon, blog },
-  middleware: getDefaultMiddleware => getDefaultMiddleware({
-    thunk: {
-      extraArgument: {
-        token: 'meocuteequas'
-      }
-    }
-  })
+  reducer: { pokemon, blog, notion }
 })
 
 

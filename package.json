@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@blocknote/react": "^0.4.6-alpha.3",
     "@craco/craco": "^7.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -16,6 +17,7 @@
     "@mui/material": "^5.11.3",
     "@mui/styled-engine-sc": "^5.11.0",
     "@mui/x-date-pickers-pro": "^5.0.13",
+    "@notionhq/client": "^2.2.3",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

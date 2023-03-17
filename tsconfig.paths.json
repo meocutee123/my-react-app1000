@@ -9,6 +9,7 @@
       "@store/*": ["./store/*"],
       "@themes/*": ["./themes/*"],
       "@assets/*": ["./assets/*"],
+      "@helpers/*": ["./helpers/*"],
       "@context/*": ["./context/*"],
       "@layouts/*": ["./layouts/*"],
       "@features/*": ["./features/*"],
