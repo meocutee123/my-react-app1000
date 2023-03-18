@@ -21,3 +21,23 @@ export type UpdateDocumentTitleParameters = {
   documentId: string,
   title: string
 }
+
+export type UpdateDocumentBlocksParameters = {
+  pageId: string,
+  children: Block
+}
+
+type Block = {
+  id: string,
+  type: "paragraph"
+  paragraph: BlockContent
+}
+
+type BlockContent = {
+  rich_text: [
+    {
+      type: 'text',
+      text: { content: string }
+    }
+  ]
+}

@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import '@blocknote/core/style.css';
 import { BlockNoteView, useBlockNote } from '@blocknote/react';
 import { Box, Container, Typography, useTheme } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { loadDocumentChildren, loadDocuments } from '@store/notion';
 
 import EditorHeader from './header';
 import EditorSidebar from './sidebar';
-import { toPartialBlockFormat } from '@helpers/notion.extensions';
+import { createBlocks, toPartialBlockFormat } from '@helpers/notion.extensions';
+import { updateDocumentBlock, updateEditorContent } from '@store/notion';
+import { Block } from '@react-types/notion';
+
+let timmer: any | null = null;
 
 export default function Editor() {
   const theme = useTheme();
@@ -15,23 +18,22 @@ export default function Editor() {
     ({ notion }) => notion
   );
 
-  const editor = useBlockNote({
-    onEditorReady(santaClaus) {
-      if (document === null) return;
+  const dispatch = useAppDispatch();
 
-      // santaClaus.insertBlocks(
-      //   [
-      //     {
-      //       type: 'heading',
-      //       props: {
-      //         level: '1',
-      //       },
-      //       content: "Hello there",
-      //     },
-      //   ],
-      //   santaClaus.topLevelBlocks[santaClaus.topLevelBlocks.length - 1].id
-      // );
-    },
+  const editor = useBlockNote({
+    onEditorContentChange(santaClaus) {
+      timmer && clearTimeout(timmer);
+      
+      timmer = setTimeout(() => {
+        const currentPosition = santaClaus.getTextCursorPosition();
+        
+        const blockToUpdate = createBlocks(currentPosition.block)
+        if(blockToUpdate === null) return          
+        dispatch(updateEditorContent(blockToUpdate))
+
+        dispatch(updateDocumentBlock({ pageId: 'cb529ee57a4f40a9bc5aeb360c23fd5c', children: blockToUpdate }));
+      }, 1000);
+    }
   });
 
   useEffect(() => {

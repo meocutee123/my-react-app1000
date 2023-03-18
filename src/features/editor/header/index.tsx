@@ -28,7 +28,7 @@ export default function EditorHeader() {
   const documentTitle = useRef(null);
   const [open, setOpen] = useState(false);
   const { document } = useAppSelector(({ notion }) => notion);
-  const textField = useRef<TextFieldProps>(null)
+  const textField = useRef<TextFieldProps>(null);
   const dispatch = useAppDispatch();
   const rename = (document: any | null) => {
     if (document === null) return;
@@ -37,10 +37,15 @@ export default function EditorHeader() {
   };
 
   const handleCloseAction = () => {
-    if(textField.current === null) return
+    if (textField.current === null) return;
 
-    dispatch(updateDocumentTitle({documentId: document.id, title: textField.current.value as string}))
-    setOpen(false)
+    dispatch(
+      updateDocumentTitle({
+        documentId: document.id,
+        title: textField.current.value as string,
+      })
+    );
+    setOpen(false);
   };
 
   return (
@@ -55,7 +60,7 @@ export default function EditorHeader() {
           {document
             ? document.properties.title.title[0].plain_text
             : 'Getting started'}
-        </Button>{' '}
+        </Button>
         <Popover
           open={open}
           disableScrollLock={true}
@@ -69,6 +74,7 @@ export default function EditorHeader() {
               label='Standard'
               variant='standard'
               inputRef={textField}
+              defaultValue={document ? document.properties.title.title[0].plain_text : ''}
             />
           </Box>
         </Popover>

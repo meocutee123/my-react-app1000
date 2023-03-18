@@ -1,3 +1,4 @@
+import { Block } from "@react-types/notion";
 import { toCamelCase } from "./string.extensions";
 
 export function toPartialBlockFormat(c: any) {
@@ -8,8 +9,29 @@ export function toPartialBlockFormat(c: any) {
     let bt = toCamelCase(b.type)
     if (bt === 'bulletedListItem') bt = 'bulletListItem';
 
-    return { type: bt, content: rt ? rt.text.content : null, };
+    return { id: b.id, type: bt, content: rt ? rt.text.content : null, };
   })
 
   return pb.filter((x: any) => x !== null);
+}
+
+export function createBlocks(block: any): Block | null {
+
+  if (block.content[0] && 'text' in block.content[0]) {
+    return {
+      id: block.id,
+      type: 'paragraph',
+      paragraph: {
+        rich_text: [
+          {
+            type: 'text',
+            text: { content: block.content[0].text },
+          },
+        ],
+      },
+    };
+  }
+
+  return null;
+
 }
